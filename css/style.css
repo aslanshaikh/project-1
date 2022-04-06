@@ -172,12 +172,12 @@ html{
 .contact{
     background-color: antiquewhite;
     
-    height: 200vh;
+    height: 150vh;
     /* margin: auto; */
 }
 .contactdet{
     font-family: 'Times New Roman', Times, serif;
-    
+
 }
 .text-center {
     text-align: center;
