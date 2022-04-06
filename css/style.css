@@ -172,7 +172,7 @@ html{
 .contact{
     background-color: antiquewhite;
     
-    height: 90vh;
+    height: 200vh;
     /* margin: auto; */
 }
 .text-center {
@@ -185,6 +185,7 @@ html{
 .form{
     max-width: 62%;
     margin: auto;
+    height: max-content;
     
 }
 .form-input{
@@ -272,3 +273,4 @@ html{
     }
 
 }
+
