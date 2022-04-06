@@ -84,9 +84,10 @@ html{
     justify-content: center;
     align-items: center;
     max-width: 50%;
-    height: 80%;
+    height: 100%;
     margin: auto;
     color: white;
+    border: 2px solid;
     font-family: 'Times New Roman', Times, serif;
     
 }
@@ -100,7 +101,7 @@ html{
     margin: auto;
 }
 .firstsection{
-    height: 100vh;
+    height: 40vh;
 }
 
 .firsthalf{
