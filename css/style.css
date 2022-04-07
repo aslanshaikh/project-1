@@ -230,3 +230,31 @@ ul{
     background: #dbd5d5;
    
 }
+
+/* //form css */
+.form{
+    max-width: 62%;
+
+    margin: auto;
+    
+}
+.form-input{
+    width: 100%;
+    border: 2px solid grey;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 12px;
+    font-size: 20px;
+}
+
+.contact{
+    background-color: antiquewhite;
+    
+    height: 120vh;
+    /* margin: auto; */
+}
+.contactdet, .text-center{
+    text-align: center;
+    padding: 12px;
+
+}
