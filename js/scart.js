@@ -30,12 +30,40 @@ function ready() {
 }
 
 function purchaseClicked() {
-    alert('Thank you for your purchase')
-    var cartItems = document.getElementsByClassName('cart-items')[0]
-    while (cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild)
+    // alert('Thank you for your purchase')
+    var quantityInputs = document.getElementsByClassName('cart-quantity-input')
+
+    for (var i = 0; i < quantityInputs.length; i++) {
+        // console.log('in' + quantityInputs[i].value)
+        var quantityInput = document.getElementById('quantity');
+        quantityInput.value += quantityInputs[i].value + ","
+        // console.log(quantityInput.value)
     }
-    updateCartTotal()
+    console.log(document.getElementById('quantity').value)
+    var phonesInputs = document.getElementsByClassName('cart-item-title')
+    for (var i = 0; i < phonesInputs.length; i++) {
+        // console.log('in' + phonesInputs[i].value)
+        var phonesInput = document.getElementById('phones');
+        phonesInput.value += phonesInputs[i].innerText + ","
+        // console.log(phonesInput.value)
+    }
+    console.log(document.getElementById('phones').value)
+    var priceInputs = document.getElementsByClassName('new-class')
+    for (var i = 0; i < priceInputs.length; i++) {
+        // console.log('    ' + priceInputs[i].innerText)
+        var priceInput = document.getElementById('price');
+        priceInput.value += priceInputs[i].innerText + ","
+        // console.log(priceInput.value)
+    }
+    console.log(document.getElementById('price').value)
+    var priceInput = document.getElementById('total');
+    priceInput.value = document.getElementById("span-total").innerText;
+    
+    // var cartItems = document.getElementsByClassName('cart-items')[0]
+    // while (cartItems.hasChildNodes()) {
+    //     cartItems.removeChild(cartItems.firstChild)
+    // }
+    // updateCartTotal()
 }
 
 function removeCartItem(event) {
@@ -45,7 +73,12 @@ function removeCartItem(event) {
 }
 
 function quantityChanged(event) {
+    // console.log("clicked")
     var input = event.target
+    // console.log(input.value)
+    // var quantityInput = document.getElementById('quantity');
+    // quantityInput.value = input.value
+    // console.log(quantityInput.value)
     if (isNaN(input.value) || input.value <= 0) {
         input.value = 1
     }
@@ -66,6 +99,8 @@ function addItemToCart(title, price, imageSrc) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
     var cartItems = document.getElementsByClassName('cart-items')[0]
+    // console.log(cartItems)
+    // console.log('helllllo')
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
@@ -78,13 +113,23 @@ function addItemToCart(title, price, imageSrc) {
             <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
             <span class="cart-item-title">${title}</span>
         </div>
-        <span class="cart-price cart-column">${price}</span>
+        <span class="cart-price cart-column new-class">${price}</span>
         <div class="cart-quantity cart-column">
             <input class="cart-quantity-input" type="number" value="1">
             <button class="btn btn-danger" type="button">REMOVE</button>
         </div>`
+
+    // var phonesInput = document.getElementById('phones');
+    // phonesInput.value += title + ","
+    // console.log(phonesInput.value)
+
+    // var priceInput = document.getElementById('price');
+    // priceInput.value += price + ","
+    // console.log(priceInput.value)
+    
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
+    funcmsg()
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
@@ -102,5 +147,5 @@ function updateCartTotal() {
         total = total + (price * quantity)
     }
     total = Math.round(total * 100) / 100
-    document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
+    document.getElementById("span-total").innerText = '$'+ total
 }

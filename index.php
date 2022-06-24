@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+    include('config/db_connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,7 +115,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$12.99</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -128,7 +133,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$10.99</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -145,7 +150,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$25.99</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
 
@@ -164,7 +169,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$30.99</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
 
@@ -186,7 +191,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$5.25</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
 
@@ -205,7 +210,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$7.29</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button" onclick="funcmsg()">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
 
@@ -223,7 +228,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$10.58</span>
-                        <button class="btn btn-primary shop-item-button"  onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button"  type="button">ADD TO CART</button>
                     </div>
                 </div>
 
@@ -242,7 +247,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$9.99</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
 
@@ -261,7 +266,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price"> $9.25</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
 
@@ -279,7 +284,7 @@
                     </div>
                     <div class="shop-item-details">
                         <span class="shop-item-price">$9.99</span>
-                        <button class="btn btn-primary shop-item-button" onclick="funcmsg()" type="button">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -352,13 +357,23 @@
             <span class="cart-price cart-header cart-column">PRICE</span>
             <span class="cart-quantity cart-header cart-column">QUANTITY</span>
         </div>
-        <div class="cart-items">
-        </div>
-        <div class="cart-total">
-            <strong class="cart-total-title">Total</strong>
-            <span class="cart-total-price">$0</span>
-        </div>
-        <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+        <form action="purchase.php" method="post">
+            <input type="hidden" id="phones" name="phones" value="">
+            <input type="hidden" id="price" name="price" value="">
+            <input type="hidden" id="quantity" name="quantity" value="">
+            <!-- <input type="hidden" id="total" name="total" value=""> -->
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price" id="span-total">$0</span>
+                <input type="hidden" id="total" name="total" value="">
+            </div>
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <input type="textbox" name="address" placeholder="Enter your Address" required>
+            <input type="Number" name="phoneNumber" placeholder="Enter your Phone number" required>
+            <button class="btn btn-primary btn-purchase" type="submit" id="purchase">PURCHASE</button>
+        </form>
     </section>
 
     <!-- //\\footer section  -->
