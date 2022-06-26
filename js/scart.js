@@ -31,6 +31,7 @@ function ready() {
 
 function purchaseClicked() {
     // alert('Thank you for your purchase')
+    
     var quantityInputs = document.getElementsByClassName('cart-quantity-input')
 
     for (var i = 0; i < quantityInputs.length; i++) {

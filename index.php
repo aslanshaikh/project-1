@@ -1,6 +1,9 @@
 <?php 
     session_start();
     include('config/db_connect.php');
+    $login = false;
+    if(isset($_SESSION['user']))
+        $login = true;
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +17,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    
+    <script>
+        function loginAlert() {
+            alert("Please log-in first");
+        }
+    </script>
 </head>
 
 <body>
@@ -30,7 +37,16 @@
                         <li> <a href="about.html">About</a></li>
                         <li> <a href="products.html">Products</a></li>
                         <li> <a href="contact.html">Contact</a></li>
-
+                        <?php 
+                            if($login == true)
+echo '<li><a href="logout.php" class="btn btn-outline-primary" id="login" role="button">Log out</a></li><li><a href="orders.php" class="btn btn-outline-primary" role="button">My Orders</a></li>';
+                            else {
+                                
+echo '<li><a href="login2.html" class="btn btn-outline-primary" id="login" role="button">Log in</a></li><li><a class="btn btn-outline-primary" href="signup.php" role="button">Sign-up</a></li>';
+                            }
+                        ?>
+                
+             
                     </ul>
                    
                 </nav>
@@ -50,55 +66,7 @@
             
         </div>
     </div>
-   
-    <!-- onsale section  -->
-    <!-- <div class="categories">
-        <div class="small-container">
-            <h2 class="titlehotselling">On Sale</h2>
-            <div class="row">
-                <div class="col-3">
-                    <img src="img/m5.webp" alt="">
-                    <h4>Apple Iphone 6E</h4>
-                    <div class="rating">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                    </div>
-                    <p>RS: 32000/-</p>
-                </div>
-                <div class="col-3">
-                    <img src="img/m2.webp" alt="">
-                    <h4>OnePlus 9r</h4>
-                    <div class="rating">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                    </div>
-                    <p>RS: 56000/-</p>
-                </div>
-                <div class="col-3">
-                    <img src="img/m3.webp" alt="">
-                    <h4>Realme Narzo 30</h4>
-                    <div class="rating">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                    </div>
-                    <p>RS: 20000/-</p>
-                </div>
-                <div class="col-3"></div>
-            </div>
-        </div>
 
-    </div> -->
-
-    <!-- featured products -->
     <div class="small-container">
         <h2 class="titlehotselling">Hot Selling Products</h2>
         <div class="row">
@@ -369,9 +337,14 @@
                 <span class="cart-total-price" id="span-total">$0</span>
                 <input type="hidden" id="total" name="total" value="">
             </div>
-            <input type="text" name="name" placeholder="Enter your name" required>
+            <!-- <input type="text" name="name" placeholder="Enter your name" required>
             <input type="textbox" name="address" placeholder="Enter your Address" required>
-            <input type="Number" name="phoneNumber" placeholder="Enter your Phone number" required>
+            <input type="Number" name="phoneNumber" placeholder="Enter your Phone number" required> -->
+            <?php
+                if($login != true)  {
+                    echo '<h2> Please login first before purchasing</h2>';
+                }
+            ?>
             <button class="btn btn-primary btn-purchase" type="submit" id="purchase">PURCHASE</button>
         </form>
     </section>
@@ -421,7 +394,7 @@
             Copyright &copy; 2022 www.A & A Mobiles.com- All Rights Reserved
         </p>
     </div>
-
+            
     <script src="js/scart.js"></script>
 
 
